@@ -1,41 +1,33 @@
-# Compilados Java
-*.class
-*.war
-*.ear
-*.jar
-
-# Logs
-*.log
-
-# Arquivos temporários
-*.tmp
-*.bak
-*.swp
-*.swo
-*~
-
-# Eclipse
-.project
-.classpath
-.settings/
-bin/
-tmp/
-
-# Maven
+HELP.md
 target/
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Gradle
-.gradle/
-build/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# IDEs adicionais
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
-.idea/
-out/
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 # macOS
 .DS_Store
