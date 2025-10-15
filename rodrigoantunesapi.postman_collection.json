@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "90faf00d-2ac8-4105-9e74-211c9fb61d7a",
+		"name": "rodrigoantunesapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49118664",
+		"_collection_link": "https://rodrigo-antunes-d3c96221-1954313.postman.co/workspace/Rodrigo-Vieira-Antunes's-Worksp~43ee213f-38e7-4fea-8c48-9e2891afa7b1/collection/49118664-90faf00d-2ac8-4105-9e74-211c9fb61d7a?action=share&source=collection_link&creator=49118664"
+	},
+	"item": [
+		{
+			"name": "Objeto API",
+			"item": [
+				{
+					"name": "Criar Objeto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": \"Fernanda Oliveira\",\n    \"apartamento\": \"U333\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"retirante\": \"João Gomes\",\n    \"retirado\": true,\n    \"excluido\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/objetos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Objeto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos Objetos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Objeto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 30,\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": \"Fernanda Oliveira\",\n    \"apartamento\": \"U333\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"retirante\": \"João Gomes\",\n    \"retirado\": true,\n    \"excluido\": false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Objeto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/51",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"51"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
