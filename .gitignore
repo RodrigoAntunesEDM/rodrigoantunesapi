@@ -1,0 +1,51 @@
+# Compilados Java
+*.class
+*.war
+*.ear
+*.jar
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+tmp/
+
+# Maven
+target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Gradle
+.gradle/
+build/
+
+# IDEs adicionais
+*.iml
+.idea/
+out/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Cache de sistema
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

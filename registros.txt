@@ -1,0 +1,50 @@
+YAL4S5EX;2025-09-16 09:02:37;Fernanda Oliveira;U333;2025-09-16 23:02:37;João Gomes;True;False
+KIAKEORW;2025-10-09 03:02:37;Fernanda Martins;W218;;;False;False
+7M21YRKQ;2025-09-18 16:02:37;Rafael Almeida;T266;2025-09-19 17:02:37;Ana Almeida;True;False
+2L2JXW1G;2025-10-03 15:02:37;Fernanda Oliveira;E161;;;False;False
+F6VYDAHG;2025-10-05 07:02:37;Mariana Silva;S301;;;False;False
+1G0N27FN;2025-09-25 02:02:37;Mariana Martins;S226;2025-09-27 07:02:37;Mariana Martins;True;False
+H3U1UHHR;2025-09-29 07:02:37;Mariana Almeida;P204;;;False;False
+EB86H8AG;2025-09-23 22:02:37;Rafael Silva;I125;;;False;False
+GYF9WVPK;2025-09-16 05:02:37;Carlos Ribeiro;Q380;;;False;False
+NJ0T2CAE;2025-09-27 06:02:37;Carlos Costa;H191;;;False;False
+SYQ9X2EY;2025-10-11 14:02:37;Juliana Silva;J172;2025-10-14 02:02:37;Ana Martins;True;False
+9LX8UKUT;2025-10-08 14:02:37;Rafael Martins;C334;;;False;False
+F9O4N8NL;2025-10-11 15:02:37;Juliana Lima;D192;2025-10-13 06:02:37;Mariana Souza;True;False
+TXHSORQZ;2025-10-09 03:02:37;João Costa;B392;;;False;False7
+XDX4EUCA;2025-09-14 17:02:37;Lucas Lima;L324;2025-09-16 11:02:37;João Souza;True;False
+LDQ6BB2J;2025-09-23 18:02:37;Lucas Ribeiro;F318;2025-09-26 17:02:37;Rafael Pereira;True;False
+ALNB7DBE;2025-09-15 14:02:37;Mariana Martins;U383;2025-09-16 15:02:37;Mariana Souza;True;False
+ZFRNLC20;2025-09-24 14:02:37;Fernanda Almeida;I290;2025-09-25 11:02:37;Ana Lima;True;False
+B5NXI8S4;2025-09-14 16:02:37;João Lima;F361;2025-09-15 02:02:37;Ana Silva;True;False
+PQEMXBD7;2025-10-02 02:02:37;Ana Gomes;Z190;2025-10-04 06:02:37;Paulo Gomes;True;False
+UFPMI7EE;2025-09-27 12:02:37;Rafael Oliveira;L201;2025-09-29 13:02:37;Juliana Martins;True;False
+LOLIV3D7;2025-09-27 05:02:37;Rafael Gomes;Y192;2025-09-28 12:02:37;Paulo Souza;True;False
+P4P89RMG;2025-10-02 14:02:37;Fernanda Pereira;S159;2025-10-05 11:02:37;Juliana Ribeiro;True;False
+SU1H6KMA;2025-09-20 03:02:37;Fernanda Lima;P216;2025-09-22 18:02:37;Fernanda Martins;True;False
+GOAP51C3;2025-09-27 18:02:37;Maria Silva;W368;2025-09-30 10:02:37;Lucas Almeida;True;False
+28H3R9CA;2025-10-06 02:02:37;Ana Pereira;H229;2025-10-08 19:02:37;Carlos Costa;True;False
+OKXJ87GY;2025-10-02 00:02:37;Mariana Almeida;U251;;;False;False
+H5AJYGK8;2025-10-08 03:02:37;Maria Silva;N295;2025-10-09 03:02:37;Fernanda Martins;True;False
+7IS6IUJF;2025-10-03 15:02:37;Carlos Almeida;B376;2025-10-05 22:02:37;Mariana Oliveira;True;False
+GI17E2XT;2025-10-03 07:02:37;Fernanda Silva;O237;2025-10-03 22:02:37;Lucas Souza;True;False
+5BICL7FW;2025-09-29 10:02:37;Juliana Silva;I213;;;False;False
+KSF6FX8D;2025-10-01 08:02:37;Carlos Silva;Z149;2025-10-01 14:02:37;Lucas Silva;True;False
+5JW63PSY;2025-09-26 06:02:37;Maria Almeida;H159;;;False;False
+5LR3GV6J;2025-10-11 13:02:37;Maria Ribeiro;B312;2025-10-13 23:02:37;Maria Souza;True;False
+IQ5HEQHQ;2025-10-13 10:02:37;Maria Souza;B185;;;False;False
+DIGP8QR6;2025-10-01 08:02:37;Juliana Souza;Q344;;;False;False
+A6N5SF2M;2025-09-24 18:02:37;Maria Souza;I243;2025-09-27 08:02:37;Paulo Oliveira;True;False
+F98ZOFQ6;2025-09-13 03:02:37;Mariana Pereira;I245;;;False;False
+MC1AFAR7;2025-09-25 18:02:37;Rafael Gomes;N187;2025-09-27 17:02:37;Lucas Martins;True;False
+NMZ4TFOK;2025-09-18 12:02:37;Lucas Costa;M340;;;False;False
+TBYPFV6B;2025-09-30 19:02:37;Paulo Oliveira;U237;;;False;False
+MHCY9KXO;2025-09-30 05:02:37;Carlos Almeida;K193;2025-10-02 13:02:37;Lucas Lima;True;False
+J23PKBYN;2025-10-06 17:02:37;Ana Martins;N336;;;False;False
+6JWY5QQX;2025-10-10 16:02:37;Mariana Pereira;P217;;;False;False
+SGK2PTZY;2025-09-21 15:02:37;Mariana Almeida;G322;;;False;False
+QR0JIZG0;2025-09-28 23:02:37;Carlos Souza;N373;;;False;False
+PQ89Y2L5;2025-09-25 00:02:37;Rafael Pereira;X341;2025-09-26 17:02:37;Ana Pereira;True;False
+KR2TRPR4;2025-10-08 16:02:37;Maria Silva;Q394;2025-10-08 19:02:37;Paulo Silva;True;False
+ROJ3164R;2025-10-10 01:02:37;Fernanda Lima;Q124;;;False;False
+1FASZVCN;2025-09-29 19:02:37;Paulo Pereira;S204;2025-10-01 22:02:37;Paulo Ribeiro;True;False
