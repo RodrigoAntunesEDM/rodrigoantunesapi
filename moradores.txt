@@ -1,0 +1,100 @@
+38146205933;Ana Laura Correia;H205;CELULAR;(51) 967963512;true
+86129735030;Guilherme da Cunha;H205;CELULAR;(51) 995409590;false
+72904185658;Ana Cavalcanti;I405;EMAIL;ana.cavalcanti@condominio.com.br;false
+54619238015;Maria Clara Caldeira;B403;CELULAR;(51) 968986246;true
+75160482911;Alícia Caldeira;C404;EMAIL;alícia.caldeira@condominio.com.br;true
+59781423005;Raul das Neves;I408;EMAIL;raul.das.neves@condominio.com.br;false
+68352490133;João Gabriel Silveira;E308;FIXO;(51) 30662022;true
+21074836987;Vitor Hugo Novaes;G102;EMAIL;vitor.hugo.novaes@condominio.com.br;false
+41563280906;Eduardo da Costa;G103;EMAIL;eduardo.da.costa@condominio.com.br;true
+52304796125;Benjamin Caldeira;E307;CELULAR;(51) 912012451;true
+07362519443;Guilherme Moraes;A307;CELULAR;(51) 985382945;true
+51043682970;Carlos Eduardo Rodrigues;K108;EMAIL;carlos.eduardo.rodrigues@condominio.com.br;false
+86453071975;Daniel Silva;B308;CELULAR;(51) 928496822;true
+73859426010;Carlos Eduardo da Mota;M101;EMAIL;carlos.eduardo.da.mota@condominio.com.br;true
+71260948501;Valentina Correia;M102;EMAIL;valentina.correia@condominio.com.br;false
+94203618533;Srta. Olivia Santos;L402;FIXO;(51) 31030173;false
+92704831505;Ana Vitória da Cruz;H101;FIXO;(51) 37676039;true
+59274610343;Luna Melo;F105;FIXO;(51) 33237986;true
+94823710622;Mariana Moreira;H304;CELULAR;(51) 935939240;false
+62157039406;Alícia Pereira;I207;CELULAR;(51) 974924377;false
+62854013905;Evelyn Moreira;D204;EMAIL;evelyn.moreira@condominio.com.br;false
+52461097399;Ana Sophia Fogaça;I403;FIXO;(51) 31004644;false
+67349285000;Ana Clara Novaes;F308;CELULAR;(51) 914726567;false
+38619427040;Pedro Lucas Moura;L408;EMAIL;pedro.lucas.moura@condominio.com.br;true
+20397851405;Srta. Beatriz Monteiro;A203;CELULAR;(51) 958048636;false
+18564739020;Srta. Stephany Costa;M106;FIXO;(51) 35684429;true
+37296514043;Sra. Helena Barbosa;E204;FIXO;(51) 34721716;true
+76293158059;Gabriel Cardoso;H304;FIXO;(51) 31769719;true
+01479682594;Paulo Novaes;L408;FIXO;(51) 39920313;true
+46890172558;Dr. Yago Azevedo;H306;CELULAR;(51) 971198921;false
+17896204304;Maria Cecília da Paz;D307;FIXO;(51) 37039722;true
+78045312653;Matheus da Mota;B408;CELULAR;(51) 903661927;true
+94756218067;Davi Lucca da Luz;L303;EMAIL;davi.lucca.da.luz@condominio.com.br;false
+24305916851;Renan Araújo;D202;EMAIL;renan.araújo@condominio.com.br;false
+45967283056;Emilly Castro;F202;EMAIL;emilly.castro@condominio.com.br;false
+62437809538;Agatha Cavalcanti;D303;CELULAR;(51) 988015946;true
+93604185793;Evelyn Oliveira;L105;CELULAR;(51) 997398087;true
+91625308442;Srta. Lívia Correia;D106;FIXO;(51) 34897017;false
+93752810602;Sr. Enrico Azevedo;K301;FIXO;(51) 31651616;false
+74351268026;Alice Fogaça;C104;EMAIL;alice.fogaça@condominio.com.br;false
+72649810378;Gabriel Costa;E101;FIXO;(51) 37763046;false
+06748539200;Dra. Evelyn Pereira;J401;EMAIL;dra..evelyn.pereira@condominio.com.br;true
+69107854366;João Pedro Farias;H108;CELULAR;(51) 944219618;false
+08264197558;Isis Cardoso;F402;CELULAR;(51) 936968952;true
+61905423870;Srta. Ana Lívia Alves;E408;FIXO;(51) 32051328;true
+75361284017;Erick da Mata;M407;CELULAR;(51) 929345383;true
+26759134052;Yago da Rosa;G304;FIXO;(51) 33909568;true
+96531427809;Heloísa Rocha;K308;EMAIL;heloísa.rocha@condominio.com.br;false
+45890137620;Júlia da Conceição;B101;CELULAR;(51) 907276778;false
+49371502860;Yasmin Souza;K201;EMAIL;yasmin.souza@condominio.com.br;true
+42873965029;Dra. Bruna Lopes;D308;CELULAR;(51) 941346348;true
+79058162494;Danilo Gonçalves;C408;CELULAR;(51) 932888893;false
+60582374162;Sofia Campos;G407;FIXO;(51) 33855893;true
+45706289158;Luiz Gustavo Sales;H101;EMAIL;luiz.gustavo.sales@condominio.com.br;false
+52683091702;Marina Caldeira;H207;EMAIL;marina.caldeira@condominio.com.br;false
+87019456294;Maria Vitória Mendes;K403;FIXO;(51) 37897052;false
+81645930793;Maria Cecília Silveira;L101;CELULAR;(51) 912027106;true
+34162570906;João Vitor das Neves;D304;CELULAR;(51) 955229299;false
+03169728512;Dr. Vinicius Araújo;M402;FIXO;(51) 39422822;true
+86052739177;Bryan Viana;B406;EMAIL;bryan.viana@condominio.com.br;false
+73198460557;Emanuella Silva;D303;CELULAR;(51) 932425014;false
+74680319240;Maria Clara Novaes;L403;EMAIL;maria.clara.novaes@condominio.com.br;true
+43512067808;Sofia Melo;E307;FIXO;(51) 31362917;false
+76432509874;Marcelo Monteiro;H205;CELULAR;(51) 993165747;false
+05368472900;Heloísa Jesus;G107;CELULAR;(51) 991794605;false
+70426593847;Dra. Ana Beatriz Monteiro;F204;CELULAR;(51) 975456105;false
+80472693565;Ana Luiza Lima;K108;CELULAR;(51) 972169220;true
+37869401269;Agatha Pinto;B304;FIXO;(51) 31771585;true
+76419308240;Sophie da Paz;C201;CELULAR;(51) 916812809;false
+56198047393;Isaac Costela;A205;CELULAR;(51) 932852158;false
+68190472313;Sr. Felipe Melo;K403;EMAIL;sr..felipe.melo@condominio.com.br;false
+52069438198;Dr. Carlos Eduardo Ferreira;F205;CELULAR;(51) 982873203;true
+46851329042;Sophia Monteiro;A303;FIXO;(51) 30299196;true
+32758014653;Thomas Freitas;F405;CELULAR;(51) 902965717;true
+27318504690;Nathan Teixeira;B201;FIXO;(51) 34919455;true
+62810495785;Guilherme da Cruz;F307;EMAIL;guilherme.da.cruz@condominio.com.br;false
+84217590350;Thales da Costa;D303;CELULAR;(51) 974358718;false
+62318049505;Igor da Rocha;A303;EMAIL;igor.da.rocha@condominio.com.br;true
+58347012644;Dr. Diego Melo;G407;FIXO;(51) 34723651;false
+07524381905;Enrico Lima;F203;CELULAR;(51) 990679821;false
+90782436510;Ana Carolina da Cunha;M204;CELULAR;(51) 947574682;false
+65130278968;Nathan Nascimento;E103;EMAIL;nathan.nascimento@condominio.com.br;true
+02437869131;João Guilherme Cunha;C404;FIXO;(51) 36206072;true
+23816095470;Cecília Barros;G401;FIXO;(51) 31467740;true
+07589132497;Paulo Ramos;B101;CELULAR;(51) 940603896;false
+72358061921;Natália da Luz;B106;CELULAR;(51) 903433860;true
+95867214346;Pedro Lucas Barros;I305;CELULAR;(51) 959685370;false
+20543691799;Manuela Pinto;E302;EMAIL;manuela.pinto@condominio.com.br;true
+70841926387;Lavínia Rocha;J203;EMAIL;lavínia.rocha@condominio.com.br;true
+74582190685;Sra. Rafaela Barbosa;G408;CELULAR;(51) 963303407;true
+41892307588;Lavínia da Mata;B202;EMAIL;lavínia.da.mata@condominio.com.br;true
+34628509700;Lucas Aragão;K205;EMAIL;lucas.aragão@condominio.com.br;false
+23687190404;Enzo Gabriel Silva;I403;CELULAR;(51) 974799027;false
+30786241535;Kamilly Pires;L406;CELULAR;(51) 963980480;false
+81604523735;Vitor Pires;C207;FIXO;(51) 38004839;true
+86934217519;Isis Cardoso;H206;FIXO;(51) 39033079;false
+47913528079;Camila Dias;B108;EMAIL;camila.dias@condominio.com.br;true
+43057261817;Pedro Henrique da Mota;H206;CELULAR;(51) 922695420;false
+07536194820;Laura Barros;E401;EMAIL;laura.barros@condominio.com.br;false
+98621750368;Breno das Neves;D203;CELULAR;(51) 902005506;false

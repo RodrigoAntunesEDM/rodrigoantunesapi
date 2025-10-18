@@ -34,10 +34,8 @@ public class ObjetoController {
 	}
 	
 	@PostMapping
-	public Objeto salvar (@RequestBody Objeto objeto) {
-		
+	public Objeto salvar (@RequestBody Objeto objeto) {	
 		return objetoService.salvar(objeto);
-		
 	}
 	
     @GetMapping("/{id}")
@@ -48,7 +46,7 @@ public class ObjetoController {
 	
     @PutMapping("/{id}")
     public Objeto atualizar(@PathVariable Integer id, @RequestBody Objeto objeto) {
-        return objetoService.atualizar(id, objeto);
+    	return 	objetoService.atualizar(id, objeto);
     }
 
     @DeleteMapping("/{id}")

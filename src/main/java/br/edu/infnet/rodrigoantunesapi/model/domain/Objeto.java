@@ -10,10 +10,12 @@ public class Objeto {
 	
 	private String codigo;
 	private LocalDateTime dataEntrada;
+	//TODO atualizar para objeto porteiro
 	private String porteiro;
 	private String apartamento;
 	private LocalDateTime dataRetirada;
-	private String retirante;
+	//TODO atualizar para objeto morador
+	private String morador;
 	private Boolean retirado = false;
 	private Boolean excluido = false;
 	
@@ -24,21 +26,6 @@ public class Objeto {
 		
 		String mensagem;
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		
-		/*
-		mensagem= "ID: " + getId();
-		
-		mensagem=mensagem + " - Objeto: "+ getCodigo() +" - Apartemento: "+ getApartamento() + " - Entregue: ";
-		
-		if (getRetirado() ){
-			
-			mensagem= mensagem + "Sim";
-			
-			mensagem= mensagem + " - Data: " + getDataRetirada().format(formato);
-			
-			
-		} else {mensagem= mensagem + "Não";}
-		*/
 		
 
 		mensagem= String.format(
@@ -104,12 +91,12 @@ public class Objeto {
 		this.dataRetirada = dataRetirada;
 	}
 	
-	public String getRetirante() {
-		return retirante;
+	public String getMorador() {
+		return morador;
 	}
 	
-	public void setRetirante(String retirante) {
-		this.retirante = retirante;
+	public void setMorador(String morador) {
+		this.morador = morador;
 	}
 	
 	public Boolean getRetirado() {
@@ -120,9 +107,10 @@ public class Objeto {
 		this.retirado = retirado;
 	
 		//if (this.retirado = true) {
-		//	this.dataRetirada = LocalDateTime.now();}
+		//	setDataRetirada(LocalDateTime.now());
+		//	}
 		//else
-		// 	{this.dataRetirada = null;}
+		//{setDataRetirada(null);}
 		
 	}
 	

@@ -8,12 +8,15 @@ import java.util.Collection;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.rodrigoantunesapi.model.domain.Objeto;
 import br.edu.infnet.rodrigoantunesapi.model.domain.service.ObjetoService;
 
 @Component
+@Order(3)
+
 public class ObjetoLoader implements ApplicationRunner{
 
 	//Criando estrutura do construtor
@@ -45,14 +48,19 @@ public class ObjetoLoader implements ApplicationRunner{
 			
 			objeto.setCodigo(campos[0]);
 			objeto.setDataEntrada(LocalDateTime.parse(campos[1], formatador));
+			
+			//TODO buscar porteiro pelo cpf
 			objeto.setPorteiro(campos[2]);
+			
 			objeto.setApartamento(campos[3]);
 			
 			if (campos[4] != null && !campos[4].isBlank()) {
 				objeto.setDataRetirada(LocalDateTime.parse(campos[4], formatador));
 			}
 			
-			objeto.setRetirante(campos[5]);
+			//TODO buscar morador pelo cpf
+			objeto.setMorador(campos[5]);
+			
 			objeto.setRetirado(Boolean.valueOf(campos[6]));
 			objeto.setExcluido(Boolean.valueOf(campos[7]));
 			
