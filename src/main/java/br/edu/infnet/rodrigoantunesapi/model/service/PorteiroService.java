@@ -55,14 +55,6 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 			throw new IllegalArgumentException("O ID utilizado deve ser  maior que zero");
 		}
 		
-		//Porteiro porteiro = mapa.get(id);
-		
-		//if(porteiro == null) {
-		//	throw new PorteiroNaoEncontradoException("O porteiro com o ID ["+id+"] não foi encontrado!");
-		//}
-		
-		//return porteiro;
-		
 		return porteiroRepository.findById(id).orElseThrow(() -> new PorteiroNaoEncontradoException("O porteiro com o ID [\"+id+\"] não foi encontrado!"));
 	}
 	
@@ -82,6 +74,7 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		if (endereco.getCep()!=null) {
 			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
 				{
+					//Tem de buscar os ceps na tabela interna, nao havendo deve buscar externamente
 					porteiro.setEndereco(cepFeignClient.findByCep(endereco.getCep()));
 				}
 		}

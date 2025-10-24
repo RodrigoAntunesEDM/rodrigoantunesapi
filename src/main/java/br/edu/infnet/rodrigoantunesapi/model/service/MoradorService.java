@@ -87,6 +87,11 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		
 		validarMorador(morador);
 		
+		if (morador.getContato() != null) {
+	        morador.getContato().forEach(c -> c.setMorador(morador));
+	    }
+		
+		
 		moradorRepository.save(morador);
 		
 		//Manter te alterar o buscaporCPF
@@ -108,8 +113,11 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		morador.setId(id);
 		
 		mapa.put(moradorEncontrado.getId(), morador);
-		
 		//return buscarPorId(moradorEncontrado.getId());
+		
+	    if (morador.getContato() != null) {
+	        morador.getContato().forEach(c -> c.setMorador(morador));
+	    }
 		
 		return	moradorRepository.save(morador);
 	}

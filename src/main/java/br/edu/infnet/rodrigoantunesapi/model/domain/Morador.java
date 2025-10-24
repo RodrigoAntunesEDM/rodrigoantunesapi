@@ -1,9 +1,13 @@
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Transient;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Morador extends Pessoa{
@@ -11,12 +15,9 @@ public class Morador extends Pessoa{
 	String apartamento;
 	Boolean ativo=true;
 
-    //@OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
-	//private List<Contato> listacontato;
-    
-    //@OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Transient
-	private List<Contato> contato;
+    @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+	private List<Contato> contato = new ArrayList<Contato>();
     
 	public String getApartamento() {
 		return apartamento;

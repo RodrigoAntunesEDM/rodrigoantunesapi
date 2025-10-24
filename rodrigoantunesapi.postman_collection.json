@@ -148,7 +148,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Fulano de Tal\",\n  \"apartamento\": \"B101\",\n  \"contato\": {\n    \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n    \"contato\": \"(99) 987676767\"\n  },\n  \"ativo\": true\n}"
+							"raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Fulano de Tal\",\n  \"apartamento\": \"B101\",\n  \"contato\": [\n    {\n        \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n        \"contato\": \"(99) 987676767\"\n    },\n    {\n        \"tipoContato\":\"EMAIL\",\n        \"contato\":\"fulanodetal@email.com \"\n    }\n  ],\n  \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/moradores",
@@ -218,7 +218,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12345678901\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n    \"contato\": {\n        \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n        \"contato\": \"(77) 98989898\"\n    },\n    \"ativo\": true\n}"
+							"raw": "{\n    \"cpf\": \"12345678901\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n  \"contato\": [\n        {\n            \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n            \"contato\": \"(99) 987676767\"\n        },\n        {\n            \"tipoContato\":\"EMAIL\",\n            \"contato\":\"fulanodetal@email.com \"\n        }\n    ],\n    \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/moradores/2",
