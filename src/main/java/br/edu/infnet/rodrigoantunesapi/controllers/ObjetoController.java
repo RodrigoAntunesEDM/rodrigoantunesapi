@@ -2,6 +2,8 @@ package br.edu.infnet.rodrigoantunesapi.controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.rodrigoantunesapi.model.domain.Objeto;
-import br.edu.infnet.rodrigoantunesapi.model.domain.service.ObjetoService;
+import br.edu.infnet.rodrigoantunesapi.model.service.ObjetoService;
 
 
 @RestController
@@ -28,30 +30,38 @@ public class ObjetoController {
 	}
 	
 	
-	@GetMapping
-	public List<Objeto> listarTodos() {
-		return objetoService.listarTodos();
-	}
-	
+
 	@PostMapping
-	public Objeto salvar (@RequestBody Objeto objeto) {	
-		return objetoService.salvar(objeto);
+	public ResponseEntity< Objeto> salvar (@RequestBody Objeto objeto) {	
+		return ResponseEntity.status(HttpStatus.CREATED).body( objetoService.salvar(objeto));
 	}
-	
-    @GetMapping("/{id}")
-    public Objeto buscarPorId(@PathVariable Integer id) {
-        return objetoService.buscarPorId(id);
-    }
-    
 	
     @PutMapping("/{id}")
-    public Objeto atualizar(@PathVariable Integer id, @RequestBody Objeto objeto) {
-    	return 	objetoService.atualizar(id, objeto);
+    public ResponseEntity< Objeto> atualizar(@PathVariable Integer id, @RequestBody Objeto objeto) {
+    	return 	ResponseEntity.ok( objetoService.atualizar(id, objeto));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity< Objeto> buscarPorId(@PathVariable Integer id) {
+        return ResponseEntity.ok( objetoService.buscarPorId(id));
+    }
+    
+	@GetMapping
+	public ResponseEntity<List<Objeto>> listarTodos() {
+		List<Objeto> lista = objetoService.listarTodos();
+		
+		if (lista.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable Integer id) {
+    public ResponseEntity<Void> excluir(@PathVariable Integer id) {
         objetoService.excluir(id);
+        
+        return ResponseEntity.noContent().build();
     }
     
 }

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.rodrigoantunesapi.model.domain.Contato;
 import br.edu.infnet.rodrigoantunesapi.model.domain.Contato.TipoContato;
+import br.edu.infnet.rodrigoantunesapi.model.service.MoradorService;
 import br.edu.infnet.rodrigoantunesapi.model.domain.Morador;
-import br.edu.infnet.rodrigoantunesapi.model.domain.service.MoradorService;
 
 @Component
 @Order(2)
@@ -31,6 +31,7 @@ public class MoradorLoader implements ApplicationRunner{
 		// Ler o arquivo
 		
 		System.out.println("Entrou no loader de Morador");
+		
 		FileReader arquivo = new FileReader("moradores.txt");
 		BufferedReader leitura = new BufferedReader(arquivo);
 		

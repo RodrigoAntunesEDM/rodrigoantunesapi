@@ -1,4 +1,4 @@
-package br.edu.infnet.rodrigoantunesapi.interfaces;
+package br.edu.infnet.rodrigoantunesapi.model.service;
 
 import java.util.List;
 

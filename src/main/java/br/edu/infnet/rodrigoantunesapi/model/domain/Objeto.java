@@ -3,19 +3,31 @@ package br.edu.infnet.rodrigoantunesapi.model.domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
+@Entity
 public class Objeto {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String codigo;
 	private LocalDateTime dataEntrada;
-	//TODO atualizar para objeto porteiro
-	private String porteiro;
+	//private String porteiro;
+	@Transient
+	private Porteiro porteiro;
+	
 	private String apartamento;
 	private LocalDateTime dataRetirada;
-	//TODO atualizar para objeto morador
-	private String morador;
+	//private String morador;
+	@Transient
+	private Morador morador;
+	
 	private Boolean retirado = false;
 	private Boolean excluido = false;
 	
@@ -67,11 +79,11 @@ public class Objeto {
 		this.dataEntrada = dataEntrada;
 	}
 	
-	public String getPorteiro() {
+	public Porteiro getPorteiro() {
 		return porteiro;
 	}
 	
-	public void setPorteiro(String porteiro) {
+	public void setPorteiro(Porteiro porteiro) {
 		this.porteiro = porteiro;
 	}
 	
@@ -91,11 +103,11 @@ public class Objeto {
 		this.dataRetirada = dataRetirada;
 	}
 	
-	public String getMorador() {
+	public Morador getMorador() {
 		return morador;
 	}
 	
-	public void setMorador(String morador) {
+	public void setMorador(Morador morador) {
 		this.morador = morador;
 	}
 	

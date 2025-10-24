@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"codigo\": \"XXXYYYDD\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": \"19856066060\",\n    \"apartamento\": \"H205\",\n    \"dataRetirada\": \"\",\n    \"morador\": \"38146205933\",\n    \"retirado\": true,\n    \"excluido\": false\n}"
+							"raw": "{\n    \"codigo\": \"XXXYYYDD\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": {\n        \"cpf\": \"19856066060\"\n    },\n    \"apartamento\": \"H205\",\n    \"dataRetirada\": \"\",\n    \"morador\": {\n        \"cpf\": \"38146205933\"\n    },\n    \"retirado\": true,\n    \"excluido\": false\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/objetos",
@@ -92,7 +92,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 30,\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": \"17600617342\",\n    \"apartamento\": \"A101\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"morador\": \"74351268026\",\n    \"retirado\": true,\n    \"excluido\": false\n}"
+							"raw": "{\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": {\n        \"cpf\": \"17600617342\"\n    },\n    \"apartamento\": \"A101\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"morador\": {\n        \"cpf\": \"74351268026\"\n    },\n    \"retirado\": true,\n    \"excluido\": false\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/objetos/30",
@@ -218,7 +218,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 2,\n    \"cpf\": \"12345678901\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n    \"contato\": {\n        \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n        \"contato\": \"(77) 98989898\"\n    },\n    \"ativo\": true\n}"
+							"raw": "{\n    \"cpf\": \"12345678901\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n    \"contato\": {\n        \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n        \"contato\": \"(77) 98989898\"\n    },\n    \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/moradores/2",
@@ -296,7 +296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cpf\": \"678983838\",\n  \"nome\": \"Maria da Silva\",\n  \"matricula\": \"76888\",\n  \"dataAdmissao\":\"2025-09-16\",\n  \"ativo\": true\n}"
+							"raw": "{\n  \"cpf\": \"678983838\",\n  \"nome\": \"Maria da Silva\",\n  \"matricula\": \"76888\",\n  \"dataAdmissao\":\"2025-09-16\",\n  \"endereco\": {\n    \"cep\": \"91740840\"\n  },\n  \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/porteiros",
@@ -366,7 +366,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"id\": 1,\n    \"cpf\": \"98765432100\",\n    \"nome\": \"Carlos Pereira\",\n    \"matricula\": \"676767\",\n    \"dataAdmissao\": \"2000-09-16T23:02:37\",\n    \"ativo\": true\n}"
+							"raw": "{\n    \"cpf\": \"98765432100\",\n    \"nome\": \"Carlos Pereira\",\n    \"matricula\": \"676767\",\n    \"dataAdmissao\": \"2000-09-16T23:02:37\",\n    \"endereco\": {\n        \"cep\": \"91787803\"\n    },\n    \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/porteiros/1",

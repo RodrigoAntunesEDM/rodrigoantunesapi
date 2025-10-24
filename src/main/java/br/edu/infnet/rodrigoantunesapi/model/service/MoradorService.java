@@ -1,6 +1,5 @@
-package br.edu.infnet.rodrigoantunesapi.model.domain.service;
+package br.edu.infnet.rodrigoantunesapi.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import br.edu.infnet.rodrigoantunesapi.exceptions.MoradorInvalidoException;
 import br.edu.infnet.rodrigoantunesapi.exceptions.MoradorNaoEncontradoException;
-import br.edu.infnet.rodrigoantunesapi.interfaces.CrudService;
 import br.edu.infnet.rodrigoantunesapi.model.domain.Morador;
+import br.edu.infnet.rodrigoantunesapi.model.repository.MoradorRepository;
 
 
 @Service
@@ -19,7 +18,14 @@ public class MoradorService implements CrudService<Morador, Integer>{
 
 	private final Map<Integer, Morador> mapa = new ConcurrentHashMap<Integer, Morador>();
 	private final AtomicInteger nextId = new AtomicInteger(1);
+	private final MoradorRepository moradorRepository;
 	
+	
+	public MoradorService(MoradorRepository moradorRepository) {
+		this.moradorRepository = moradorRepository;
+	}
+
+
 	private void validarMorador(Morador morador) {
 		//RN - Morador Null
 		if(morador == null) {
@@ -57,14 +63,16 @@ public class MoradorService implements CrudService<Morador, Integer>{
 			throw new IllegalArgumentException("O ID utilizado deve ser  maior que zero");
 		}
 		
-		Morador morador = mapa.get(id);
+		//Morador morador = mapa.get(id);
 		
-		if(morador == null) {
-			throw new MoradorNaoEncontradoException("O morador com o ID ["+id+"] não foi encontrado!");
-		}
+		//if(morador == null) {
+		//	throw new MoradorNaoEncontradoException("O morador com o ID ["+id+"] não foi encontrado!");
+		//}
 		
-		return morador;
-		
+		//return morador;
+				
+		return moradorRepository.findById(id).orElseThrow(() -> new MoradorNaoEncontradoException("O morador com o ID [\"+id+\"] não foi encontrado!"));
+	
 	}
 	
 	@Override
@@ -72,9 +80,12 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		
 		validarMorador(morador);
 		
+		moradorRepository.save(morador);
+		
+		//Manter te alterar o buscaporCPF
 		morador.setId(nextId.getAndIncrement());
-
 		mapa.put(morador.getId(), morador);
+		
 		
 		return morador;
 	}
@@ -87,14 +98,19 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		Morador moradorEncontrado = buscarPorId(id);
 		validarMorador(morador);
 		
+		morador.setId(id);
+		
 		mapa.put(moradorEncontrado.getId(), morador);
 		
-		return buscarPorId(moradorEncontrado.getId());
+		//return buscarPorId(moradorEncontrado.getId());
+		
+		return	moradorRepository.save(morador);
 	}
 
 	@Override
 	public List<Morador> listarTodos() {
-		return new ArrayList<Morador>(mapa.values());
+		//return new ArrayList<Morador>(mapa.values());
+		return moradorRepository.findAll();
 	}
 
 	@Override
@@ -102,6 +118,8 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		Morador morador = buscarPorId(id);
 		
 		mapa.remove(morador.getId());
+		
+		moradorRepository.delete(morador);
 	}
 	
 	public Morador inativar (Integer id) {
@@ -110,7 +128,9 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		 morador.setAtivo(false); 
 		 mapa.put(id, morador);   
 		 
-	    return morador;
+		// return morador;
+		 
+		 return moradorRepository.save(morador);
 	}
 	
 	public Morador buscarPorCpf (String cpf) {
