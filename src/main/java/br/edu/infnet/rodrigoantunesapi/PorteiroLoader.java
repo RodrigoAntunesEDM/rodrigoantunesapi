@@ -16,7 +16,7 @@ import br.edu.infnet.rodrigoantunesapi.model.service.PorteiroService;
 
 
 @Component
-@Order(1)
+@Order(2)
 public class PorteiroLoader implements ApplicationRunner{
 
 	private final PorteiroService porteiroService;

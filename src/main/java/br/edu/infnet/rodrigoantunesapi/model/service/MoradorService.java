@@ -48,9 +48,16 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		}
 				
 		//RN - O contato é obrigatório
+		/*
 		if(
 		  (morador.getContato().getTipoContato() == null) || 
 		  (morador.getContato().getContato()== null || morador.getContato().getContato().trim().isEmpty())) {
+			throw new MoradorInvalidoException("O tipo e contato do morador é obrigatório.");
+		}
+		*/
+		
+		if ((morador.getContato() == null || morador.getContato().isEmpty()) 
+				|| morador.getContato().get(0).getTipoContato()==null ){
 			throw new MoradorInvalidoException("O tipo e contato do morador é obrigatório.");
 		}
 	}

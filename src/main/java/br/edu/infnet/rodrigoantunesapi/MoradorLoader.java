@@ -2,6 +2,9 @@ package br.edu.infnet.rodrigoantunesapi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -13,7 +16,7 @@ import br.edu.infnet.rodrigoantunesapi.model.service.MoradorService;
 import br.edu.infnet.rodrigoantunesapi.model.domain.Morador;
 
 @Component
-@Order(2)
+@Order(1)
 
 public class MoradorLoader implements ApplicationRunner{
 
@@ -43,7 +46,8 @@ public class MoradorLoader implements ApplicationRunner{
 			campos = linha.split(";");
 			
 			Morador morador = new Morador();
-			Contato contato = new Contato();
+			List<Contato> listacontatos = new ArrayList<Contato>();
+			Contato contato =new Contato();
 			
 			morador.setCpf(campos[0]);
 			morador.setNome(campos[1]);
@@ -51,7 +55,9 @@ public class MoradorLoader implements ApplicationRunner{
 			
 			contato.setTipoContato(TipoContato.valueOf(campos[3]));
 			contato.setContato(campos[4]);
-			morador.setContato(contato);
+			listacontatos.add(contato);
+			
+			morador.setContato(listacontatos);
 			
 			morador.setAtivo(Boolean.valueOf(campos[5]));
 			

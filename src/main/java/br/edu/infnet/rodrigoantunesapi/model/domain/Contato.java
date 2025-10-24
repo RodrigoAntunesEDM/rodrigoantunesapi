@@ -1,3 +1,4 @@
+
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
 import jakarta.persistence.GeneratedValue;
