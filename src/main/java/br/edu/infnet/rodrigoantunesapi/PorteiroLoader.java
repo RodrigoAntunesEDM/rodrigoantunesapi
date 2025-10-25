@@ -56,7 +56,6 @@ public class PorteiroLoader implements ApplicationRunner{
 			
 			endereco.setCep(campos[5]);
 			porteiro.setEndereco(endereco);			
-
 			
 			porteiroService.salvar(porteiro);
 			

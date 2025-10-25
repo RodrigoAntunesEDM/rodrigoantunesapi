@@ -8,18 +8,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
 public class Porteiro extends Pessoa{
 
+	@NotNull (message="A matrícula do porteiro é obrigatória.")
 	String matricula;
+	
+	@NotNull(message="A data de admissão do porteito é obrigatória.")
 	LocalDate dataAdmissao;
+	
 	Boolean ativo=true;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "endereco_id", nullable = true)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@Valid
 	Endereco endereco;
 	
 	

@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Objeto {
@@ -16,14 +17,22 @@ public class Objeto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull(message="Código de identificaçao do objeto é obrigatório.")
 	private String codigo;
+	
+	@NotNull(message="Data da entrada do objeto é obrigatória.")
 	private LocalDateTime dataEntrada;
 	//private String porteiro;
+	
+	@NotNull (message = "Apartamento para entrega é obrigatório.")
+	private String apartamento;
+	
+	private LocalDateTime dataRetirada;
+	
 	@Transient
 	private Porteiro porteiro;
 	
-	private String apartamento;
-	private LocalDateTime dataRetirada;
+	
 	//private String morador;
 	@Transient
 	private Morador morador;

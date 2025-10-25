@@ -68,9 +68,10 @@ public class ObjetoLoader implements ApplicationRunner{
 				objeto.setDataRetirada(LocalDateTime.parse(campos[4], formatador));
 			}
 			
-			
-			morador.setCpf(campos[5]);
-			objeto.setMorador(morador);
+			if (campos[5].trim().isEmpty()==false ) {
+				morador.setCpf(campos[5]);
+				objeto.setMorador(morador);
+			}
 			
 			
 			objeto.setRetirado(Boolean.valueOf(campos[6]));

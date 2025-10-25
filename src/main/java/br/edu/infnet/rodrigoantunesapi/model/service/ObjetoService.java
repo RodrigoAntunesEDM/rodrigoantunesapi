@@ -10,16 +10,13 @@ import br.edu.infnet.rodrigoantunesapi.model.domain.Porteiro;
 import br.edu.infnet.rodrigoantunesapi.model.repository.ObjetoRepository;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Service
 public class ObjetoService  implements CrudService<Objeto, Integer>{
 
-	private final Map<Integer, Objeto> mapa = new ConcurrentHashMap<Integer, Objeto>();
-	private final AtomicInteger nextId = new AtomicInteger(1);
+	//private final Map<Integer, Objeto> mapa = new ConcurrentHashMap<Integer, Objeto>();
+	//private final AtomicInteger nextId = new AtomicInteger(1);
 	private final PorteiroService porteiroService;
 	private final MoradorService moradorService ;
 	private final ObjetoRepository objetoRepository;
@@ -67,14 +64,6 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 			throw new IllegalArgumentException("O ID utilizado deve ser  maior que zero");
 		}
 		
-		//Objeto objeto = mapa.get(id);
-		
-		//if(objeto == null) {
-		//	throw new ObjetoNaoEncontradoException("O objeto com o ID ["+id+"] não foi encontrado!");
-		//}
-		
-		//return objeto;
-		
 		return objetoRepository.findById(id).orElseThrow(() -> new ObjetoNaoEncontradoException("O objeto com o ID ["+id+"] não foi encontrado!"));
 	}
 	
@@ -89,7 +78,10 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 		porteiro=objeto.getPorteiro();
 		//Se nao tem nome é uma inclusao via Postman recebe apenas o CPF		
 		if (porteiro.getNome()==null ||  porteiro.getNome().trim().isEmpty()) {
-			objeto.setPorteiro(porteiroService.buscarPorCpf(porteiro.getCpf()));			
+			if (porteiro.getCpf()!=null) {
+				objeto.setPorteiro(porteiroService.buscarPorCpf(porteiro.getCpf()));	
+			}
+					
 		}
 	
 		morador=null;
@@ -98,12 +90,14 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 		//Se nao tem nome é uma inclusao via Postman recebe apenas o CPF
 		if (morador!=null) {
 			if (morador.getNome()==null ||  morador.getNome().trim().isEmpty()) {
-				objeto.setMorador(moradorService.buscarPorCpf(morador.getCpf()));			
+				if (morador.getCpf()!=null) {
+					objeto.setMorador(moradorService.buscarPorCpf(morador.getCpf()));	
+				}
 			}
 		}
 	
-		objeto.setId(nextId.getAndIncrement());
-		mapa.put(objeto.getId(), objeto);
+		//objeto.setId(nextId.getAndIncrement());
+		//mapa.put(objeto.getId(), objeto);
 		//return objeto;
 		
 		return objetoRepository.save(objeto);
@@ -112,8 +106,7 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 	@Override
 	public Objeto atualizar(Integer id, Objeto objeto) {
 
-		
-		Objeto objetoAtualizado = buscarPorId(id);
+		buscarPorId(id);
 		
 		validarObjeto(objeto);
 		
@@ -135,7 +128,7 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 			}
 		}
 				
-		mapa.put(objetoAtualizado.getId(), objeto);
+		//mapa.put(objetoAtualizado.getId(), objeto);
 		
 		//return buscarPorId(objetoAtualizado.getId());
 		return objetoRepository.save(objeto);
@@ -152,7 +145,7 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 	public void excluir(Integer id) {
 		Objeto objeto = buscarPorId(id);
 		
-		mapa.remove(objeto.getId());
+		//mapa.remove(objeto.getId());
 		
 		objetoRepository.delete(objeto);
 		

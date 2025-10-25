@@ -1,10 +1,6 @@
 package br.edu.infnet.rodrigoantunesapi.model.service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.rodrigoantunesapi.clients.ViaCepFeignClient;
@@ -18,8 +14,8 @@ import br.edu.infnet.rodrigoantunesapi.model.repository.PorteiroRepository;
 @Service
 public class PorteiroService  implements CrudService<Porteiro, Integer>{
 
-	private final Map<Integer, Porteiro> mapa = new ConcurrentHashMap<Integer, Porteiro>();
-	private final AtomicInteger nextId = new AtomicInteger(1);
+	//private final Map<Integer, Porteiro> mapa = new ConcurrentHashMap<Integer, Porteiro>();
+	//private final AtomicInteger nextId = new AtomicInteger(1);
 	
 	private final PorteiroRepository porteiroRepository;
 	private final ViaCepFeignClient cepFeignClient;
@@ -73,31 +69,34 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		//Busca o endereco
 		endereco=porteiro.getEndereco();
 		
-		if (endereco.getCep()!=null) {
-			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
-			{
-				Endereco enderecoViaCep;
-				enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
-				
-				if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null) {
-					//Verifica de tem no banco
-					Endereco enderecoRepository;
-					enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
-						
-			        porteiro.setEndereco(enderecoRepository);
-				} else
+		if(endereco!=null) {
+			
+			if (endereco.getCep()!=null) {
+				if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
 				{
-					porteiro.setEndereco(null);
+					Endereco enderecoViaCep;
+					enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
+					
+					if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null) {
+						//Verifica de tem no banco
+						Endereco enderecoRepository;
+						enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
+							
+				        porteiro.setEndereco(enderecoRepository);
+					} else
+					{
+						porteiro.setEndereco(null);
+					}
 				}
+					
 			}
-				
 		}
 		
 		porteiroRepository.save(porteiro);
 		
 		//Temporario ate fazer a busca por CPF
-		porteiro.setId(nextId.getAndIncrement());
-		mapa.put(porteiro.getId(), porteiro);
+		//porteiro.setId(nextId.getAndIncrement());
+		//mapa.put(porteiro.getId(), porteiro);
 		
 		
 		return porteiro;
@@ -106,7 +105,7 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 
 	@Override
 	public Porteiro atualizar(Integer id, Porteiro porteiro) {
-		Porteiro porteiroEncontrado=buscarPorId(id);
+		buscarPorId(id);
 
 		validarPorteiro(porteiro);
 		
@@ -116,39 +115,31 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		Endereco endereco;
 		endereco=porteiro.getEndereco();
 		
-		/*
-		if (endereco.getCep()!=null) {
-			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
-			{
-				porteiro.setEndereco(cepFeignClient.findByCep(endereco.getCep()));
-			}
-		}
-		*/
-		
-		
-		if (endereco.getCep()!=null) {
-			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
-			{
-				Endereco enderecoViaCep;
-				enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
-				
-				if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null ) {
+		if(endereco!=null) {
+			if (endereco.getCep()!=null) {
+				if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
+				{
+					Endereco enderecoViaCep;
+					enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
 					
-					//Verifica de tem no banco
-					Endereco enderecoRepository;
-					enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
-					
-					porteiro.setEndereco(enderecoRepository);
-				} else {
-					porteiro.setEndereco(null);
+					if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null ) {
+						
+						//Verifica de tem no banco
+						Endereco enderecoRepository;
+						enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
+						
+						porteiro.setEndereco(enderecoRepository);
+					} else {
+						porteiro.setEndereco(null);
+					}
 				}
 			}
 		}
 		
 		//Remover no futuro 
-		mapa.put(porteiroEncontrado.getId(), porteiro);
-		
+		//mapa.put(porteiroEncontrado.getId(), porteiro);
 		//return buscarPorId(porteiroEncontrado.getId());
+		
 		return porteiroRepository.save(porteiro);
 		
 	}
@@ -162,7 +153,7 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 	@Override
 	public void excluir(Integer id) {
 		Porteiro porteiro = buscarPorId(id);
-		mapa.remove(porteiro.getId());
+		//mapa.remove(porteiro.getId());
 		
 		porteiroRepository.delete(porteiro);
 		
@@ -173,18 +164,19 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		  
 		porteiro.setAtivo(false); 
 		
-		mapa.put(id, porteiro);   
+		//mapa.put(id, porteiro);   
 	    //return porteiro;
 		
 		return porteiroRepository.save(porteiro);
 	}
+
 	
 	public Porteiro buscarPorCpf(String cpf) {
-	    
-		return mapa.values().stream()
-	            .filter(m -> cpf.equals(m.getCpf()))
-	            .findFirst()
-	            .orElse(null);    
+	    if (cpf == null || cpf.trim().isEmpty()) {
+	        throw new IllegalArgumentException("O CPF não pode ser nulo ou vazio.");
+	    }
+
+	    return porteiroRepository.findByCpf(cpf)
+	            .orElseThrow(() -> new PorteiroNaoEncontradoException("Porteiro com CPF " + cpf + " não encontrado."));
 	}
-	
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Contato {
@@ -22,7 +23,10 @@ public class Contato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@NotNull(message= "O tipo de contato é obrigatório.")
 	TipoContato tipoContato;
+	
+	@NotNull(message="O contato é obrigatório.")
 	String contato;
 	
 	 // Relacionamento: muitos contatos -> 1 morador

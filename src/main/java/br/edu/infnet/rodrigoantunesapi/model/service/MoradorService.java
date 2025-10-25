@@ -1,10 +1,6 @@
 package br.edu.infnet.rodrigoantunesapi.model.service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.rodrigoantunesapi.exceptions.MoradorInvalidoException;
@@ -16,8 +12,8 @@ import br.edu.infnet.rodrigoantunesapi.model.repository.MoradorRepository;
 @Service
 public class MoradorService implements CrudService<Morador, Integer>{
 
-	private final Map<Integer, Morador> mapa = new ConcurrentHashMap<Integer, Morador>();
-	private final AtomicInteger nextId = new AtomicInteger(1);
+	//private final Map<Integer, Morador> mapa = new ConcurrentHashMap<Integer, Morador>();
+	//private final AtomicInteger nextId = new AtomicInteger(1);
 	private final MoradorRepository moradorRepository;
 	
 	
@@ -47,15 +43,7 @@ public class MoradorService implements CrudService<Morador, Integer>{
 			throw new MoradorInvalidoException("O apartamento do morador é obrigatório.");
 		}
 				
-		//RN - O contato é obrigatório
-		/*
-		if(
-		  (morador.getContato().getTipoContato() == null) || 
-		  (morador.getContato().getContato()== null || morador.getContato().getContato().trim().isEmpty())) {
-			throw new MoradorInvalidoException("O tipo e contato do morador é obrigatório.");
-		}
-		*/
-		
+		//RN - O contato é obrigatório		
 		if ((morador.getContato() == null || morador.getContato().isEmpty()) 
 				|| morador.getContato().get(0).getTipoContato()==null ){
 			throw new MoradorInvalidoException("O tipo e contato do morador é obrigatório.");
@@ -70,14 +58,6 @@ public class MoradorService implements CrudService<Morador, Integer>{
 			throw new IllegalArgumentException("O ID utilizado deve ser  maior que zero");
 		}
 		
-		//Morador morador = mapa.get(id);
-		
-		//if(morador == null) {
-		//	throw new MoradorNaoEncontradoException("O morador com o ID ["+id+"] não foi encontrado!");
-		//}
-		
-		//return morador;
-				
 		return moradorRepository.findById(id).orElseThrow(() -> new MoradorNaoEncontradoException("O morador com o ID [\"+id+\"] não foi encontrado!"));
 	
 	}
@@ -95,8 +75,8 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		moradorRepository.save(morador);
 		
 		//Manter te alterar o buscaporCPF
-		morador.setId(nextId.getAndIncrement());
-		mapa.put(morador.getId(), morador);
+		//morador.setId(nextId.getAndIncrement());
+		//mapa.put(morador.getId(), morador);
 		
 		
 		return morador;
@@ -107,12 +87,12 @@ public class MoradorService implements CrudService<Morador, Integer>{
 	@Override
 	public Morador atualizar(Integer id, Morador morador) {
 		
-		Morador moradorEncontrado = buscarPorId(id);
+		buscarPorId(id);
 		validarMorador(morador);
 		
 		morador.setId(id);
 		
-		mapa.put(moradorEncontrado.getId(), morador);
+		//mapa.put(moradorEncontrado.getId(), morador);
 		//return buscarPorId(moradorEncontrado.getId());
 		
 	    if (morador.getContato() != null) {
@@ -132,7 +112,7 @@ public class MoradorService implements CrudService<Morador, Integer>{
 	public void excluir(Integer id) {
 		Morador morador = buscarPorId(id);
 		
-		mapa.remove(morador.getId());
+		//mapa.remove(morador.getId());
 		
 		moradorRepository.delete(morador);
 	}
@@ -141,17 +121,21 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		 Morador morador = buscarPorId(id);
 
 		 morador.setAtivo(false); 
-		 mapa.put(id, morador);   
-		 
-		// return morador;
+		 //mapa.put(id, morador);   
+		 // return morador;
 		 
 		 return moradorRepository.save(morador);
 	}
 	
-	public Morador buscarPorCpf (String cpf) {
-	    return mapa.values().stream()
-	            .filter(m -> cpf.equals(m.getCpf()))
-	            .findFirst()
-	            .orElse(null);     
+	
+	public Morador buscarPorCpf(String cpf) {
+	    if (cpf == null || cpf.trim().isEmpty()) {
+	        throw new IllegalArgumentException("O CPF não pode ser nulo ou vazio.");
+	    }
+
+	    return moradorRepository.findByCpf(cpf)
+	            .orElseThrow(() -> new MoradorNaoEncontradoException("Morador com CPF " + cpf + " não encontrado."));
 	}
+	
+	
 }
