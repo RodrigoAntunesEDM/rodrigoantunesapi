@@ -19,7 +19,7 @@ public class Contato {
 	}
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	TipoContato tipoContato;

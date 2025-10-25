@@ -23,13 +23,17 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 	
 	private final PorteiroRepository porteiroRepository;
 	private final ViaCepFeignClient cepFeignClient;
+	private final EnderecoService enderecoService;
 
-	public PorteiroService(PorteiroRepository porteiroRepository, ViaCepFeignClient cepFeignClient) {
+		
+	public PorteiroService(PorteiroRepository porteiroRepository, ViaCepFeignClient cepFeignClient,
+			EnderecoService enderecoService) {
 		this.porteiroRepository = porteiroRepository;
 		this.cepFeignClient = cepFeignClient;
+		this.enderecoService = enderecoService;
 	}
-	
-	
+
+
 	private void validarPorteiro(Porteiro porteiro) {
 		//RN - Porteiro Null
 		if(porteiro == null) {
@@ -55,7 +59,7 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 			throw new IllegalArgumentException("O ID utilizado deve ser  maior que zero");
 		}
 		
-		return porteiroRepository.findById(id).orElseThrow(() -> new PorteiroNaoEncontradoException("O porteiro com o ID [\"+id+\"] não foi encontrado!"));
+		return porteiroRepository.findById(id).orElseThrow(() -> new PorteiroNaoEncontradoException("O porteiro com o ID [" + id + "] não foi encontrado!"));
 	}
 	
 	
@@ -64,19 +68,29 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		
 		Endereco endereco;
 		
-		
 		validarPorteiro(porteiro);
-		
 		
 		//Busca o endereco
 		endereco=porteiro.getEndereco();
 		
 		if (endereco.getCep()!=null) {
 			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
+			{
+				Endereco enderecoViaCep;
+				enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
+				
+				if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null) {
+					//Verifica de tem no banco
+					Endereco enderecoRepository;
+					enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
+						
+			        porteiro.setEndereco(enderecoRepository);
+				} else
 				{
-					//Tem de buscar os ceps na tabela interna, nao havendo deve buscar externamente
-					porteiro.setEndereco(cepFeignClient.findByCep(endereco.getCep()));
+					porteiro.setEndereco(null);
 				}
+			}
+				
 		}
 		
 		porteiroRepository.save(porteiro);
@@ -93,26 +107,50 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 	@Override
 	public Porteiro atualizar(Integer id, Porteiro porteiro) {
 		Porteiro porteiroEncontrado=buscarPorId(id);
-		Endereco endereco;
-		
+
 		validarPorteiro(porteiro);
 		
 		porteiro.setId(id);
 		
 		//Busca o endereco
+		Endereco endereco;
 		endereco=porteiro.getEndereco();
 		
+		/*
 		if (endereco.getCep()!=null) {
 			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
 			{
 				porteiro.setEndereco(cepFeignClient.findByCep(endereco.getCep()));
 			}
 		}
+		*/
 		
+		
+		if (endereco.getCep()!=null) {
+			if (endereco.getLogradouro()==null ||  endereco.getLogradouro().trim().isEmpty())
+			{
+				Endereco enderecoViaCep;
+				enderecoViaCep= cepFeignClient.findByCep(endereco.getCep());	
+				
+				if (enderecoViaCep!= null && enderecoViaCep.getLogradouro()!=null ) {
+					
+					//Verifica de tem no banco
+					Endereco enderecoRepository;
+					enderecoRepository=enderecoService.obterOuCriar(enderecoViaCep);
+					
+					porteiro.setEndereco(enderecoRepository);
+				} else {
+					porteiro.setEndereco(null);
+				}
+			}
+		}
+		
+		//Remover no futuro 
 		mapa.put(porteiroEncontrado.getId(), porteiro);
 		
 		//return buscarPorId(porteiroEncontrado.getId());
 		return porteiroRepository.save(porteiro);
+		
 	}
 
 	@Override

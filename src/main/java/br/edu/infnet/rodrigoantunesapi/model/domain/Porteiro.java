@@ -2,8 +2,10 @@ package br.edu.infnet.rodrigoantunesapi.model.domain;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
@@ -15,9 +17,9 @@ public class Porteiro extends Pessoa{
 	LocalDate dataAdmissao;
 	Boolean ativo=true;
 	
-	//@Transient
-	@ManyToOne (cascade = CascadeType.ALL)
-	@JoinColumn (name = "endereco_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "endereco_id", nullable = true)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	Endereco endereco;
 	
 	

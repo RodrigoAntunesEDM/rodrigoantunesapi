@@ -1,16 +1,26 @@
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
+@Table(
+	    name = "endereco",
+	    uniqueConstraints = @UniqueConstraint(columnNames = {"cep"})
+	)
+
+
 public class Endereco {
 	
 	//Criar o id
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String cep;
@@ -63,4 +73,18 @@ public class Endereco {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	// equals/hashCode apenas pelo CEP
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Endereco)) return false;
+        Endereco e = (Endereco) o;
+        return Objects.equals(cep, e.cep);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cep);
+    }
 }
