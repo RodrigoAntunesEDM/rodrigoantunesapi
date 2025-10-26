@@ -1,8 +1,10 @@
 
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,10 +31,10 @@ public class Contato {
 	@NotNull(message="O contato é obrigatório.")
 	String contato;
 	
-	 // Relacionamento: muitos contatos -> 1 morador
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "morador_id")
+	// Relacionamento muitos contatos para 1 morador
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "morador_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "contato"})
 	private Morador morador;
     
    

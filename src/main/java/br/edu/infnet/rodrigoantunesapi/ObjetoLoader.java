@@ -37,7 +37,7 @@ public class ObjetoLoader implements ApplicationRunner{
 
 		System.out.println("Entrou no loader do Objeto");
 		
-		FileReader arquivo = new FileReader("registros.txt");
+		FileReader arquivo = new FileReader("objetos.txt");
 		BufferedReader leitura = new BufferedReader(arquivo);
 		
 		String linha = leitura.readLine();

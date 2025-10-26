@@ -12,8 +12,6 @@ import br.edu.infnet.rodrigoantunesapi.model.repository.MoradorRepository;
 @Service
 public class MoradorService implements CrudService<Morador, Integer>{
 
-	//private final Map<Integer, Morador> mapa = new ConcurrentHashMap<Integer, Morador>();
-	//private final AtomicInteger nextId = new AtomicInteger(1);
 	private final MoradorRepository moradorRepository;
 	
 	
@@ -71,14 +69,8 @@ public class MoradorService implements CrudService<Morador, Integer>{
 	        morador.getContato().forEach(c -> c.setMorador(morador));
 	    }
 		
-		
 		moradorRepository.save(morador);
-		
-		//Manter te alterar o buscaporCPF
-		//morador.setId(nextId.getAndIncrement());
-		//mapa.put(morador.getId(), morador);
-		
-		
+				
 		return morador;
 	}
 
@@ -92,8 +84,6 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		
 		morador.setId(id);
 		
-		//mapa.put(moradorEncontrado.getId(), morador);
-		//return buscarPorId(moradorEncontrado.getId());
 		
 	    if (morador.getContato() != null) {
 	        morador.getContato().forEach(c -> c.setMorador(morador));
@@ -104,15 +94,12 @@ public class MoradorService implements CrudService<Morador, Integer>{
 
 	@Override
 	public List<Morador> listarTodos() {
-		//return new ArrayList<Morador>(mapa.values());
 		return moradorRepository.findAll();
 	}
 
 	@Override
 	public void excluir(Integer id) {
 		Morador morador = buscarPorId(id);
-		
-		//mapa.remove(morador.getId());
 		
 		moradorRepository.delete(morador);
 	}
@@ -121,8 +108,6 @@ public class MoradorService implements CrudService<Morador, Integer>{
 		 Morador morador = buscarPorId(id);
 
 		 morador.setAtivo(false); 
-		 //mapa.put(id, morador);   
-		 // return morador;
 		 
 		 return moradorRepository.save(morador);
 	}

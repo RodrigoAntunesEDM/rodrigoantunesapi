@@ -3,11 +3,15 @@ package br.edu.infnet.rodrigoantunesapi.model.domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -29,18 +33,20 @@ public class Objeto {
 	
 	private LocalDateTime dataRetirada;
 	
-	@Transient
-	private Porteiro porteiro;
-	
-	
-	//private String morador;
-	@Transient
-	private Morador morador;
+	//Muitos objetos para um porteiro
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "porteiro_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
+    private Porteiro porteiro;
+
+    //Muitos objetos para um morador
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "morador_id", nullable = true)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
+    private Morador morador;
 	
 	private Boolean retirado = false;
 	private Boolean excluido = false;
-	
-	
 	
 	@Override
 	public String toString() {
@@ -48,7 +54,6 @@ public class Objeto {
 		String mensagem;
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		
-
 		mensagem= String.format(
 		        "ID: %04d | Objeto: %-8s | Apartamento: %-4s | Entregue: %-3s | Data: %-16s",
 		        id,
@@ -57,10 +62,8 @@ public class Objeto {
 		        retirado ? "Sim" : "Não",
 		        retirado ? dataRetirada.format(formato) : ""
 		        );
-	
 		
 		return  mensagem;
-		
 	}
 	
 
@@ -125,16 +128,8 @@ public class Objeto {
 	}
 	
 	public void setRetirado(Boolean retirado) {
-		this.retirado = retirado;
-	
-		//if (this.retirado = true) {
-		//	setDataRetirada(LocalDateTime.now());
-		//	}
-		//else
-		//{setDataRetirada(null);}
-		
+		this.retirado = retirado;	
 	}
-	
 	
 	public Boolean getExcluido() {
 		return excluido;

@@ -11,5 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface PorteiroRepository extends JpaRepository<Porteiro, Integer> {
+	//Metodo busca por CPF
 	Optional<Porteiro> findByCpf(String cpf);
 }

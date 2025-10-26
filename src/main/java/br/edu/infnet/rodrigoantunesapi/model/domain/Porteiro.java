@@ -1,21 +1,32 @@
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 
 @Entity
+@Table(
+	    name = "porteiro",
+	    uniqueConstraints = @UniqueConstraint(columnNames = {"cpf"}))
+
 public class Porteiro extends Pessoa{
 
 	@NotNull (message="A matrícula do porteiro é obrigatória.")
+	@Column(unique = true, nullable = false)
 	String matricula;
 	
 	@NotNull(message="A data de admissão do porteito é obrigatória.")
@@ -23,11 +34,16 @@ public class Porteiro extends Pessoa{
 	
 	Boolean ativo=true;
 	
+	//Relacionamento 1 porteiro para 1 endereço
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "endereco_id", nullable = true)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@Valid
 	Endereco endereco;
+	
+	//Relacionamento 1 porteiro para muitos objetos
+	@OneToMany(mappedBy = "porteiro", cascade = CascadeType.ALL, orphanRemoval = false)
+	private List<Objeto> objetos = new ArrayList<>();
 	
 	
 	public Endereco getEndereco() {
@@ -48,7 +64,6 @@ public class Porteiro extends Pessoa{
 	public void setDataAdmissao(LocalDate dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
-	
 	public Boolean getAtivo() {
 		return ativo;
 	}

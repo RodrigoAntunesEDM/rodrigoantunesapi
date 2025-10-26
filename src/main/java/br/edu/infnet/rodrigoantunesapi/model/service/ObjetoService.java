@@ -15,8 +15,6 @@ import java.util.List;
 @Service
 public class ObjetoService  implements CrudService<Objeto, Integer>{
 
-	//private final Map<Integer, Objeto> mapa = new ConcurrentHashMap<Integer, Objeto>();
-	//private final AtomicInteger nextId = new AtomicInteger(1);
 	private final PorteiroService porteiroService;
 	private final MoradorService moradorService ;
 	private final ObjetoRepository objetoRepository;
@@ -95,10 +93,6 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 				}
 			}
 		}
-	
-		//objeto.setId(nextId.getAndIncrement());
-		//mapa.put(objeto.getId(), objeto);
-		//return objeto;
 		
 		return objetoRepository.save(objeto);
 	}
@@ -127,26 +121,20 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 				objeto.setMorador(moradorService.buscarPorCpf(morador.getCpf()));			
 			}
 		}
-				
-		//mapa.put(objetoAtualizado.getId(), objeto);
-		
-		//return buscarPorId(objetoAtualizado.getId());
+
 		return objetoRepository.save(objeto);
 		
 	}
 	
 	@Override
 	public List<Objeto> listarTodos() {
-		//return new ArrayList<Objeto>(mapa.values());
 		return objetoRepository.findAll();
 	}
 
 	@Override
 	public void excluir(Integer id) {
 		Objeto objeto = buscarPorId(id);
-		
-		//mapa.remove(objeto.getId());
-		
+				
 		objetoRepository.delete(objeto);
 		
 	}

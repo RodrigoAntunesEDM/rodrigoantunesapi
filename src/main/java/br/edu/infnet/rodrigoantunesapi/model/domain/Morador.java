@@ -3,15 +3,20 @@ package br.edu.infnet.rodrigoantunesapi.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(
+	    name = "morador",
+	    uniqueConstraints = @UniqueConstraint(columnNames = {"cpf"}))
+	    
 public class Morador extends Pessoa{
 	
 	@NotNull(message="O apartamento do morador é obrigatório.")
@@ -19,10 +24,15 @@ public class Morador extends Pessoa{
 	
 	Boolean ativo=true;
 
+	//Relacionamento 1 morador para muitos contatos
     @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnoreProperties("morador")
     @Valid
-	private List<Contato> contato = new ArrayList<Contato>();
+	private List<Contato> contato = new ArrayList<>();
+    
+    //Relacionamento 1 morador para muitos objetos
+    @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<Objeto> objetos = new ArrayList<>();
     
 	public String getApartamento() {
 		return apartamento;
@@ -31,7 +41,6 @@ public class Morador extends Pessoa{
 	public void setApartamento(String apartamento) {
 		this.apartamento = apartamento;
 	}
-
 
 	public List<Contato> getContato() {
 		return contato;

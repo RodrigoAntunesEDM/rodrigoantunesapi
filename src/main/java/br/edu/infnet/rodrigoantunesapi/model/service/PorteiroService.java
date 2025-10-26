@@ -13,9 +13,6 @@ import br.edu.infnet.rodrigoantunesapi.model.repository.PorteiroRepository;
 
 @Service
 public class PorteiroService  implements CrudService<Porteiro, Integer>{
-
-	//private final Map<Integer, Porteiro> mapa = new ConcurrentHashMap<Integer, Porteiro>();
-	//private final AtomicInteger nextId = new AtomicInteger(1);
 	
 	private final PorteiroRepository porteiroRepository;
 	private final ViaCepFeignClient cepFeignClient;
@@ -94,10 +91,6 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		
 		porteiroRepository.save(porteiro);
 		
-		//Temporario ate fazer a busca por CPF
-		//porteiro.setId(nextId.getAndIncrement());
-		//mapa.put(porteiro.getId(), porteiro);
-		
 		
 		return porteiro;
 	}
@@ -136,9 +129,6 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 			}
 		}
 		
-		//Remover no futuro 
-		//mapa.put(porteiroEncontrado.getId(), porteiro);
-		//return buscarPorId(porteiroEncontrado.getId());
 		
 		return porteiroRepository.save(porteiro);
 		
@@ -163,9 +153,6 @@ public class PorteiroService  implements CrudService<Porteiro, Integer>{
 		Porteiro porteiro = buscarPorId(id);
 		  
 		porteiro.setAtivo(false); 
-		
-		//mapa.put(id, porteiro);   
-	    //return porteiro;
 		
 		return porteiroRepository.save(porteiro);
 	}

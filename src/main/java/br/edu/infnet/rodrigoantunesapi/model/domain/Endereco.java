@@ -1,7 +1,5 @@
 package br.edu.infnet.rodrigoantunesapi.model.domain;
 
-import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -77,17 +75,4 @@ public class Endereco {
 		this.estado = estado;
 	}
 	
-	// equals/hashCode apenas pelo CEP
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Endereco)) return false;
-        Endereco e = (Endereco) o;
-        return Objects.equals(cep, e.cep);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cep);
-    }
 }
