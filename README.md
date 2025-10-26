@@ -23,6 +23,7 @@ Este projeto foi desenvolvido para **gerir as entregas na portaria de um condom�
 br.edu.infnet.rodrigoantunesapi
 ├── controllers         # Endpoints REST (Morador, Porteiro, Objeto)
 ├── clients             # Endpoints REST serviços externos
+├── Model              
 │ ├── domain            # Entidades (Morador, Porteiro, Contato, Endereco, Objeto)
 │ ├── repository        # Interfaces Spring Data JPA
 │ └── service           # Regras de negócio
