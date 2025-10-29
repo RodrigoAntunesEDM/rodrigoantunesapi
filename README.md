@@ -21,15 +21,16 @@ Este projeto foi desenvolvido para **gerir as entregas na portaria de um condom�
 
 ```
 br.edu.infnet.rodrigoantunesapi
+├── rodrigoantunesapi   # Classe principal para inicialização da aplicação com execução de loaders para carga de porteiros, moradores e objetos entregues
 ├── controllers         # Endpoints REST (Morador, Porteiro, Objeto)
 ├── clients             # Endpoints REST serviços externos
 ├── Model              
 │ ├── domain            # Entidades (Morador, Porteiro, Contato, Endereco, Objeto)
 │ ├── repository        # Interfaces Spring Data JPA
 │ └── service           # Regras de negócio
-├── exceptions          # Exceções personalizadas
-│ └── handler           # Tratamento global de erros
-└── rodrigoantunesapi   # Classe principal para inicialização da aplicação com execução de loaders para carga de porteiros, moradores e objetos entregues.
+└── exceptions          # Exceções personalizadas
+  └── handler           # Tratamento global de erros
+
 ```
 
 ---
@@ -92,6 +93,12 @@ Operações disponíveis:
 
 ---
 
+## 🧪 Teste via Postman
+
+Está disponível no repositório o arquivo **rodrigoantunesapi.postman_collection.json** para importação e validação dos endpoints.
+
+---
+
 ## 🧠 Serviços e Regras de Negócio
 
 Os *services* implementam as regras de negócio de cada entidade, realizando:
@@ -112,7 +119,7 @@ Esse mecanismo centraliza o tratamento de exceções como:
 - Violação de integridade (`DataIntegrityViolationException`)
 - Erros genéricos (`RuntimeException`)
 
-Com isso, todas as respostas de erro são retornadas em formato JSON estruturado.
+Todas as respostas de erro são retornadas em formato JSON estruturado.
 
 ---
 
@@ -147,11 +154,6 @@ Acesse o console H2 após iniciar a aplicação:
 - **Usuário:** `sa`
 - **Senha:** *(em branco)*
 
----
-
-## 🧪 Teste via Postman
-
-Está disponível no repositório o arquivo rodrigoantunesapi.postman_collection.json para importação e validação dos endpoints.
 
 ---
 
@@ -159,5 +161,5 @@ Está disponível no repositório o arquivo rodrigoantunesapi.postman_collection
 
 **Rodrigo Antunes**  
 📦 [github.com/RodrigoAntunesEDM](https://github.com/RodrigoAntunesEDM)  
-💡 Projeto desenvolvido para estudos de **Desenvolvimento Web com Spring Boot (INFNET)**.
+💡 Projeto desenvolvido para estudos de **Desenvolvimento Java com Spring Boot (Instituto INFNET)**.
 

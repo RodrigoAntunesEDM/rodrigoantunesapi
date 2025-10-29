@@ -26,21 +26,20 @@ public class Objeto {
 	
 	@NotNull(message="Data da entrada do objeto é obrigatória.")
 	private LocalDateTime dataEntrada;
-	//private String porteiro;
-	
+
 	@NotNull (message = "Apartamento para entrega é obrigatório.")
 	private String apartamento;
 	
 	private LocalDateTime dataRetirada;
 	
 	//Muitos objetos para um porteiro
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "porteiro_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
     private Porteiro porteiro;
 
     //Muitos objetos para um morador
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "morador_id", nullable = true)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
     private Morador morador;
@@ -55,12 +54,14 @@ public class Objeto {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		
 		mensagem= String.format(
-		        "ID: %04d | Objeto: %-8s | Apartamento: %-4s | Entregue: %-3s | Data: %-16s",
+		        "ID: %04d | Objeto: %-8s | Apartamento: %-4s | Porteiro: %-20s | Entregue: %-3s | Data: %-16s | Morador: %-20s  ",
 		        id,
 		        codigo,
 		        apartamento,
+		        porteiro.getNome(),
 		        retirado ? "Sim" : "Não",
-		        retirado ? dataRetirada.format(formato) : ""
+		        retirado ? dataRetirada.format(formato) : "",
+	        	morador != null ? morador.getNome() : ""	
 		        );
 		
 		return  mensagem;

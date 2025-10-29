@@ -11,9 +11,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.rodrigoantunesapi.model.domain.Contato;
-import br.edu.infnet.rodrigoantunesapi.model.domain.Contato.TipoContato;
+//import br.edu.infnet.rodrigoantunesapi.model.domain.Contato.TipoContato;
 import br.edu.infnet.rodrigoantunesapi.model.service.MoradorService;
 import br.edu.infnet.rodrigoantunesapi.model.domain.Morador;
+import br.edu.infnet.rodrigoantunesapi.model.domain.TipoContato;
 
 @Component
 @Order(1)

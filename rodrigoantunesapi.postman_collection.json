@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "90faf00d-2ac8-4105-9e74-211c9fb61d7a",
+		"_postman_id": "077cf852-b43f-4fdb-bf52-9f929685a326",
 		"name": "rodrigoantunesapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "49118664",
-		"_collection_link": "https://rodrigo-antunes-d3c96221-1954313.postman.co/workspace/Rodrigo-Vieira-Antunes's-Worksp~43ee213f-38e7-4fea-8c48-9e2891afa7b1/collection/49118664-90faf00d-2ac8-4105-9e74-211c9fb61d7a?action=share&source=collection_link&creator=49118664"
+		"_collection_link": "https://rodrigo-antunes-d3c96221-1954313.postman.co/workspace/Rodrigo-Vieira-Antunes's-Worksp~43ee213f-38e7-4fea-8c48-9e2891afa7b1/collection/49118664-077cf852-b43f-4fdb-bf52-9f929685a326?action=share&source=collection_link&creator=49118664"
 	},
 	"item": [
 		{
@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"codigo\": \"XXXYYYDD\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": {\n        \"cpf\": \"19856066060\"\n    },\n    \"apartamento\": \"H205\",\n    \"dataRetirada\": \"\",\n    \"morador\": {\n        \"cpf\": \"38146205933\"\n    },\n    \"retirado\": true,\n    \"excluido\": false\n}"
+							"raw": "{\n    \"codigo\": \"XXXYYYDD\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": { \"cpf\": \"19856066060\" },\n    \"apartamento\": \"H205\",\n    \"dataRetirada\": \"\",\n    \"morador\": { \"cpf\": \"21074836987\" },\n    \"retirado\": false,\n    \"excluido\": false\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/objetos",
@@ -81,6 +81,96 @@
 					"response": []
 				},
 				{
+					"name": "Buscar Objeto por Código",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/codigo/NJ0T2CAE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"codigo",
+								"NJ0T2CAE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Objetos por Apartamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/apartamento/G107",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"apartamento",
+								"G107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Objetos Pendentes por Apartamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/apartamento/C404/pendentes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"apartamento",
+								"C404",
+								"pendentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Objetos Entregues por Apartamento (dataRetirada DESC)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/objetos/apartamento/C408/entregues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"objetos",
+								"apartamento",
+								"C408",
+								"entregues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Atualizar Objeto",
 					"request": {
 						"method": "PUT",
@@ -92,7 +182,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": {\n        \"cpf\": \"17600617342\"\n    },\n    \"apartamento\": \"A101\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"morador\": {\n        \"cpf\": \"74351268026\"\n    },\n    \"retirado\": true,\n    \"excluido\": false\n}"
+							"raw": "{\n    \"codigo\": \"YAL4S5EX\",\n    \"dataEntrada\": \"2025-09-16T09:02:37\",\n    \"porteiro\": { \"cpf\": \"17600617342\" },\n    \"apartamento\": \"A101\",\n    \"dataRetirada\": \"2025-09-16T23:02:37\",\n    \"morador\": { \"cpf\": \"74351268026\" },\n    \"retirado\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/objetos/30",
@@ -148,7 +238,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Fulano de Tal\",\n  \"apartamento\": \"B101\",\n  \"contato\": [\n    {\n        \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n        \"contato\": \"(99) 987676767\"\n    },\n    {\n        \"tipoContato\":\"EMAIL\",\n        \"contato\":\"fulanodetal@email.com \"\n    }\n  ],\n  \"ativo\": true\n}"
+							"raw": "{\n  \"cpf\": \"77777777777\",\n  \"nome\": \"Fulano de Tal\",\n  \"apartamento\": \"B101\",\n  \"contato\": [\n    { \"tipoContato\": \"CELULAR\", \"contato\": \"(99) 987676767\" },\n    { \"tipoContato\": \"EMAIL\", \"contato\": \"fulanodetal@email.com\" }\n  ],\n  \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/moradores",
@@ -218,7 +308,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12345678901\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n  \"contato\": [\n        {\n            \"tipoContato\": \"CELULAR\",  //CELULAR, EMAIL, FIXO\n            \"contato\": \"(99) 987676767\"\n        },\n        {\n            \"tipoContato\":\"EMAIL\",\n            \"contato\":\"fulanodetal@email.com \"\n        }\n    ],\n    \"ativo\": true\n}"
+							"raw": "{\n    \"cpf\": \"86129735030\",\n    \"nome\": \"Fulano de Tal\",\n    \"apartamento\": \"B101\",\n    \"contato\": [\n        { \"tipoContato\": \"CELULAR\", \"contato\": \"(99) 987676767\" },\n        { \"tipoContato\": \"EMAIL\", \"contato\": \"fulanodetal@email.com\" }\n    ],\n    \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/moradores/2",
@@ -296,7 +386,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cpf\": \"678983838\",\n  \"nome\": \"Maria da Silva\",\n  \"matricula\": \"76888\",\n  \"dataAdmissao\":\"2025-09-16\",\n  \"endereco\": {\n    \"cep\": \"91740840\"\n  },\n  \"ativo\": true\n}"
+							"raw": "{\n  \"cpf\": \"678983838\",\n  \"nome\": \"Maria da Silva\",\n  \"matricula\": \"76888\",\n  \"dataAdmissao\": \"2025-09-16\",\n  \"endereco\": { \"cep\": \"91740840\" },\n  \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/porteiros",
@@ -366,7 +456,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"98765432100\",\n    \"nome\": \"Carlos Pereira\",\n    \"matricula\": \"676767\",\n    \"dataAdmissao\": \"2000-09-16T23:02:37\",\n    \"endereco\": {\n        \"cep\": \"91787803\"\n    },\n    \"ativo\": true\n}"
+							"raw": "{\n    \"cpf\": \"98765432100\",\n    \"nome\": \"Carlos Pereira\",\n    \"matricula\": \"676767\",\n    \"dataAdmissao\": \"2000-09-16T23:02:37\",\n    \"endereco\": { \"cep\": \"91787803\" },\n    \"ativo\": true\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/porteiros/1",

@@ -60,8 +60,34 @@ public class ObjetoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Integer id) {
         objetoService.excluir(id);
-        
         return ResponseEntity.noContent().build();
+    }
+    
+    //Buscar objeto por código
+    @GetMapping("/codigo/{codigo}")
+    public ResponseEntity<Objeto> buscarPorCodigo(@PathVariable String codigo) {
+    	return ResponseEntity.ok( objetoService.buscarPorCodigo(codigo));
+    }
+
+    //Buscar objetos de um determinado apartamento
+    @GetMapping("/apartamento/{apartamento}")
+    public ResponseEntity<List<Objeto>> buscarPorApartamento(@PathVariable String apartamento) {
+        List<Objeto> objetos = objetoService.buscarPorApartamento(apartamento);
+        return objetos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(objetos);
+    }
+
+    //Buscar objetos não entregues (pendentes) de um apartamento
+    @GetMapping("/apartamento/{apartamento}/pendentes")
+    public ResponseEntity<List<Objeto>> buscarNaoEntreguesPorApartamento(@PathVariable String apartamento) {
+        List<Objeto> objetos = objetoService.buscarNaoEntreguesPorApartamento(apartamento);
+        return objetos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(objetos);
+    }
+
+    //Buscar objetos entregues de um apartamento (ordenados por dataRetirada DESC)
+    @GetMapping("/apartamento/{apartamento}/entregues")
+    public ResponseEntity<List<Objeto>> buscarEntreguesPorApartamento(@PathVariable String apartamento) {
+        List<Objeto> objetos = objetoService.buscarEntreguesPorApartamento(apartamento);
+        return objetos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(objetos);
     }
     
 }

@@ -23,6 +23,7 @@ public class Morador extends Pessoa{
 	String apartamento;
 	
 	Boolean ativo=true;
+	Boolean excluido=false;
 
 	//Relacionamento 1 morador para muitos contatos
     @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -31,7 +32,7 @@ public class Morador extends Pessoa{
 	private List<Contato> contato = new ArrayList<>();
     
     //Relacionamento 1 morador para muitos objetos
-    @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Objeto> objetos = new ArrayList<>();
     
 	public String getApartamento() {
@@ -55,6 +56,14 @@ public class Morador extends Pessoa{
 	}
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public Boolean getExcluido() {
+		return excluido;
+	}
+
+	public void setExcluido(Boolean excluido) {
+		this.excluido = excluido;
 	}
 	
 }

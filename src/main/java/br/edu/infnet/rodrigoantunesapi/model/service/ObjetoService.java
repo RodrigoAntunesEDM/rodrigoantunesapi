@@ -138,5 +138,25 @@ public class ObjetoService  implements CrudService<Objeto, Integer>{
 		objetoRepository.delete(objeto);
 		
 	}
+	
+	// Buscar objeto por código
+    public Objeto buscarPorCodigo(String codigo) {
+        return objetoRepository.findByCodigo(codigo).orElseThrow(() -> new ObjetoNaoEncontradoException("O objeto com o ID ["+codigo+"] não foi encontrado!"));
+    }
+
+    // Buscar objetos de um determinado apartamento
+    public List<Objeto> buscarPorApartamento(String apartamento) {
+        return objetoRepository.findByApartamento(apartamento);
+    }
+
+    // Buscar objetos não entregues de um apartamento
+    public List<Objeto> buscarNaoEntreguesPorApartamento(String apartamento) {
+        return objetoRepository.findByApartamentoAndRetiradoFalse(apartamento);
+    }
+
+    //Buscar objetos entregues de um apartamento (ordenados por data de retirada DESC)
+    public List<Objeto> buscarEntreguesPorApartamento(String apartamento) {
+        return objetoRepository.findByApartamentoAndRetiradoTrueOrderByDataRetiradaDesc(apartamento);
+    }
 
 }

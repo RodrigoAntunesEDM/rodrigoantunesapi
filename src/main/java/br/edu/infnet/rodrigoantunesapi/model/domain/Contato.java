@@ -4,6 +4,8 @@ package br.edu.infnet.rodrigoantunesapi.model.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,17 +17,18 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class Contato {
 
-	public enum TipoContato {
-	    CELULAR,
-	    FIXO,
-	    EMAIL
-	}
+	//public enum TipoContato {
+	//    CELULAR,
+	//    FIXO,
+	//    EMAIL
+	//}
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	@NotNull(message= "O tipo de contato é obrigatório.")
+	@Enumerated(EnumType.STRING)
 	TipoContato tipoContato;
 	
 	@NotNull(message="O contato é obrigatório.")
@@ -33,7 +36,7 @@ public class Contato {
 	
 	// Relacionamento muitos contatos para 1 morador
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "morador_id")
+	@JoinColumn(name = "morador_id", nullable=false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "contato"})
 	private Morador morador;
     

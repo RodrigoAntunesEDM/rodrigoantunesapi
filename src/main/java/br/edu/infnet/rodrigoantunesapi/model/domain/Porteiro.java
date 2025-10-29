@@ -33,6 +33,7 @@ public class Porteiro extends Pessoa{
 	LocalDate dataAdmissao;
 	
 	Boolean ativo=true;
+	Boolean excluido=false;
 	
 	//Relacionamento 1 porteiro para 1 endereço
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -70,5 +71,11 @@ public class Porteiro extends Pessoa{
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	
+	public Boolean getExcluido() {
+		return excluido;
+	}
+	public void setExcluido(Boolean excluido) {
+		this.excluido = excluido;
+	}
+
 }
