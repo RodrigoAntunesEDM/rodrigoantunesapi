@@ -1,4 +1,4 @@
-# 📦 RodrigoAntunesAPI — Gestão de Entregas de Condomínio
+# 📦 rodrigoantunesapi — Gestão de Entregas em um Condomínio
 
 Este projeto foi desenvolvido para **gerir as entregas na portaria de um condomínio**, permitindo o controle de moradores, porteiros, contatos, endereços e objetos entregues.
 
