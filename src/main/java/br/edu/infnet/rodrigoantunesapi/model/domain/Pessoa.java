@@ -4,6 +4,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @MappedSuperclass
 public  abstract class  Pessoa {
@@ -12,8 +15,12 @@ public  abstract class  Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	
-	String cpf;
-	String nome;
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(min = 3, max = 50)
+    private String nome;
+
+    @Pattern(regexp = "\\d{11}", message = "O CPF deve conter 11 dígitos.")
+    private String cpf;
 	
 	
 	public Integer getId() {

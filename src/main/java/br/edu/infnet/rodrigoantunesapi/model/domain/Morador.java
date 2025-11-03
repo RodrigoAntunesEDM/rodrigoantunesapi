@@ -10,7 +10,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(
@@ -19,7 +21,11 @@ import jakarta.validation.constraints.NotNull;
 	    
 public class Morador extends Pessoa{
 	
-	@NotNull(message="O apartamento do morador é obrigatório.")
+    @NotBlank(message = "O apartamento do morador é obrigatório.")
+    @Pattern(
+        regexp = "^[A-Z][0-9]{3}$",
+        message = "O apartamento deve seguir o formato Letra + 3 dígitos, ex: B101."
+    )
 	String apartamento;
 	
 	Boolean ativo=true;
@@ -29,6 +35,8 @@ public class Morador extends Pessoa{
     @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("morador")
     @Valid
+    @Size(min = 1, message = "O morador tem que ter no mínimo 1 contato.")
+
 	private List<Contato> contato = new ArrayList<>();
     
     //Relacionamento 1 morador para muitos objetos

@@ -12,7 +12,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class Objeto {
@@ -21,13 +24,18 @@ public class Objeto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotNull(message="Código de identificaçao do objeto é obrigatório.")
+	@NotBlank(message = "O código de identificação do objeto é obrigatório.")
 	private String codigo;
 	
 	@NotNull(message="Data da entrada do objeto é obrigatória.")
+    @PastOrPresent(message = "A data de entrada não pode ser futura.")
 	private LocalDateTime dataEntrada;
 
-	@NotNull (message = "Apartamento para entrega é obrigatório.")
+	@NotBlank(message = "O apartamento da entrega é obrigatório.")
+    @Pattern(
+            regexp = "^[A-Z][0-9]{3}$",
+            message = "O apartamento deve seguir o formato Letra e 3 dígitos, ex: B101."
+        )
 	private String apartamento;
 	
 	private LocalDateTime dataRetirada;
@@ -35,7 +43,7 @@ public class Objeto {
 	//Muitos objetos para um porteiro
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "porteiro_id", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
+    @NotNull(message = "O porteiro é obrigatório.")
     private Porteiro porteiro;
 
     //Muitos objetos para um morador
@@ -44,6 +52,7 @@ public class Objeto {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "objetos"})
     private Morador morador;
 	
+
 	private Boolean retirado = false;
 	private Boolean excluido = false;
 	

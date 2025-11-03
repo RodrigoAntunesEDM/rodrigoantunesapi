@@ -15,7 +15,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 
 @Entity
@@ -25,11 +27,12 @@ import jakarta.validation.constraints.NotNull;
 
 public class Porteiro extends Pessoa{
 
-	@NotNull (message="A matrícula do porteiro é obrigatória.")
+	@NotBlank (message="A matrícula do porteiro é obrigatória.")
 	@Column(unique = true, nullable = false)
 	String matricula;
 	
 	@NotNull(message="A data de admissão do porteito é obrigatória.")
+    @PastOrPresent(message = "A data de admissão não pode ser futura.")
 	LocalDate dataAdmissao;
 	
 	Boolean ativo=true;

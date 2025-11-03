@@ -16,12 +16,6 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Contato {
-
-	//public enum TipoContato {
-	//    CELULAR,
-	//    FIXO,
-	//    EMAIL
-	//}
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +32,7 @@ public class Contato {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "morador_id", nullable=false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "contato"})
+	@NotNull (message="O morador é obrigatório.")
 	private Morador morador;
     
    
